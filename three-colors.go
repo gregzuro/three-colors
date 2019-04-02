@@ -20,6 +20,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/gregzuro/three-colors/count"
+
 	_ "image/gif"
 	_ "image/jpeg"
 	_ "image/png" // one of the test files - supposedly a jpg - didn't work until this was added...
@@ -96,15 +98,16 @@ func get(url string) {
 		log.Printf("error decoding %s: %v", url, err)
 	} else {
 		wg.Add(1)
-		go count(url, image)
+		go doCount(url, image)
 	}
 	wg.Done()
 }
 
 // count does the countng of colors and finding the three most common
-func count(url string, image image.Image) {
-	colorCounts := countColorsFromImage(image)
-	topThree := findTopThreeFromCounts(colorCounts)
+func doCount(url string, image image.Image) {
+
+	colorCounts := count.CountColorsFromImage(image)
+	topThree := count.FindTopThreeFromCounts(colorCounts)
 
 	printResults(url, topThree, colorCounts, false)
 
