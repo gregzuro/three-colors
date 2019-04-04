@@ -32,6 +32,8 @@ var results map[string][]string
 var resultsLock = sync.RWMutex{}
 var wg sync.WaitGroup // to wait for goroutines
 
+const maxMB uint64 = 128
+
 func main() {
 	var memStats runtime.MemStats
 
@@ -68,10 +70,13 @@ func main() {
 			runtime.ReadMemStats(&memStats)
 
 			// if we're using too much memory
-			if bToMb(memStats.Alloc) > 128 {
-				log.Printf("using too much memory. pausing. (Alloc = %v MiB)", bToMb(memStats.Alloc))
-				time.Sleep(time.Millisecond * 500)
+			if bToMb(memStats.Alloc) > maxMB {
 				runtime.GC() // need this to avoid deadlock in some cases
+				runtime.ReadMemStats(&memStats)
+				if bToMb(memStats.Alloc) > maxMB {
+					time.Sleep(time.Millisecond * 500)
+					log.Printf("using too much memory. pausing. (Alloc = %v MiB)", bToMb(memStats.Alloc))
+				}
 			} else {
 				break
 			}
