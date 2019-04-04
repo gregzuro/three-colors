@@ -83,7 +83,7 @@ func main() {
 // get gets the image file from the URL and decodes it
 func get(url string) {
 
-	// indicate in-progress files but adding a (blank) result to the map
+	// indicate in-progress files by adding a (blank) result to the map
 	resultsLock.Lock()
 	results[url] = []string{""}
 	resultsLock.Unlock()
