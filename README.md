@@ -1,5 +1,7 @@
 # three-colors
 
+[![Join the chat at https://gitter.im/three-colors-/community](https://badges.gitter.im/three-colors-/community.svg)](https://gitter.im/three-colors-/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Run
 
 ```bash
