@@ -2,6 +2,18 @@
 
 [![Join the chat at https://gitter.im/three-colors-/community](https://badges.gitter.im/three-colors-/community.svg)](https://gitter.im/three-colors-/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+## Instructions
+
+Bellow is a list of links leading to an image, read this list of images and find 3 most prevalent colors in the RGB scheme in hexadecimal format (#000000 - #FFFFFF) in each image, and write the result into a CSV file in a form of url,color,color,color.
+
+Please focus on speed and resources. The solution should be able to handle input files with more than a billion URLs, using limited resources (e.g. 1 CPU, 512MB RAM). Keep in mind that there is no limit on the execution time, but make sure you are utilizing the provided resources as much as possible at any time during the program execution.
+
+Answer should be posted in a git repo.
+
+## Links
+
+<1000 links removed>
+  
 ## Run
 
 ```bash
